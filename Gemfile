@@ -8,7 +8,6 @@ gem 'rails', '3.2.13'
 gem 'mongoid', '~> 3.1.5'
 gem 'jquery-rails', '~> 3.0.4'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,18 +20,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test	
+group :development, :test do	
 	gem "rspec-rails", ">= 2.11.0"
 	gem "factory_girl_rails", ">= 4.0.0"
 end
 
-group :test
-	gem "capybara", ">= 1.1.2", :group => :test
-	gem "database_cleaner", ">= 0.8.0", :group => :test
-	gem "mongoid-rspec", ">= 1.4.6", :group => :test
-	gem "email_spec", ">= 1.2.1", :group => :test
-	gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
-	gem "launchy", ">= 2.1.2", :group => :test
+group :test do
+	gem "capybara", ">= 1.1.2"
+	gem "database_cleaner", ">= 0.8.0"
+	gem "mongoid-rspec", ">= 1.4.6"
+	gem "email_spec", ">= 1.2.1"
+	gem "cucumber-rails", ">= 1.3.0"
+	gem "launchy", ">= 2.1.2"
 end
 
 # To use ActiveModel has_secure_password
