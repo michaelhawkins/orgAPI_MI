@@ -1,4 +1,16 @@
 OrganizationAPI::Application.routes.draw do
+  get "employees/new"
+
+  get "employees/index"
+
+  get "employees/show"
+
+  get "employees/create"
+
+  get "employees/update"
+
+  get "employees/destroy"
+
   resources :organizations
 
   # The priority is based upon order of creation:
