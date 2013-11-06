@@ -1,15 +1,5 @@
 OrganizationAPI::Application.routes.draw do
-  get "employees/new"
-
-  get "employees/index"
-
-  get "employees/show"
-
-  get "employees/create"
-
-  get "employees/update"
-
-  get "employees/destroy"
+  resources :employees
 
   resources :organizations
 
