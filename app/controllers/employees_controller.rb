@@ -14,6 +14,8 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.update_attributes(params[:employee])
+        #@employee.organization_ids.push("5283bf3cbf09a5dfd6000002")
+        #@employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
         format.json { head :no_content }
       else
@@ -33,13 +35,14 @@ class EmployeesController < ApplicationController
   end
 
   def show
-      @employee = Employee.find(params[:id])
+    @employee = Employee.find(params[:id])
 
     respond_to do |format|
         format.html # show.html.erb
         format.xml  { render xml: @employee }
-        format.json { render json: @employee.to_json(:include => :organizations) }
-   end    
+        #format.json { render json: @employee.to_json(:include => :organizations) }
+        format.json { render json: @employee }
+    end    
   end
 
   def create
