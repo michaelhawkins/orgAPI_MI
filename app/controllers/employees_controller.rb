@@ -9,20 +9,20 @@ class EmployeesController < ApplicationController
 
   end
 
-  def update
-    @employee = Employee.find(params[:id])
+  def create
+    @employee = Employee.new(params[:employee])
+    logger.debug "Create employees: #{@employee.attributes.inspect}"
 
     respond_to do |format|
-      if @employee.update_attributes(params[:employee])
-        #@employee.organization_ids.push("5283bf3cbf09a5dfd6000002")
-        #@employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
-        format.json { head :no_content }
+      if @employee.save
+        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+        format.json { render json: @employee, status: :created, location: @employee }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "new" }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
-    end    
+    end
+
   end
 
   def index
@@ -45,20 +45,20 @@ class EmployeesController < ApplicationController
     end    
   end
 
-  def create
-    @employee = Employee.new(params[:employee])
-    logger.debug "Create employee: #{@employee.attributes.inspect}"
+  def update
+    @employee = Employee.find(params[:id])
 
     respond_to do |format|
-      if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
-        format.json { render json: @employee, status: :created, location: @employee }
+      if @employee.update_attributes(params[:employee])
+        #@employee.organization_ids.push("5283bf3cbf09a5dfd6000002")
+        #@employee.save
+        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render action: "new" }
+        format.html { render action: "edit" }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
-    end
-
+    end    
   end
 
   def destroy
