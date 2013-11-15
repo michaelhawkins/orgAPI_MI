@@ -47,6 +47,7 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(params[:employee])
+    logger.debug "Create employee: #{@employee.attributes.inspect}"
 
     respond_to do |format|
       if @employee.save

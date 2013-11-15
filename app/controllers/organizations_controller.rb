@@ -32,6 +32,8 @@ class OrganizationsController < ApplicationController
 
 	def create
 		@organization = Organization.new(params[:organization])
+		#logger.info("#{Time.now} create params[:organization] ##{params[:organization]}!")
+		logger.debug "Create organization: #{@organization.attributes.inspect}"
 
 		respond_to do |format|
 			if @organization.save
